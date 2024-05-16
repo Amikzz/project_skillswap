@@ -57,7 +57,7 @@ class _OnboardViewState extends State<OnboardView> {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(20)
                     ),
-                    fixedSize: const Size(240, 60),
+                    fixedSize: const Size(240, 70),
                     backgroundColor: Colors.black,
                     foregroundColor: Colors.white,
                   ),
