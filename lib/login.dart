@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:project_skillswap/customWidgets/haveanaccount_login_signup.dart';
+import 'package:project_skillswap/customWidgets/textfield_login_signup.dart';
+import 'package:project_skillswap/customWidgets/startup_elevated_button.dart';
 
 class LoginView extends StatelessWidget {
   const LoginView({super.key});
@@ -24,68 +27,23 @@ class LoginView extends StatelessWidget {
                   padding: const EdgeInsets.all(25.0),
                   child: Column(
                       children: [
-                        const TextField(
-                          decoration: InputDecoration(
-                          hintStyle: TextStyle(
-                          fontFamily: 'Roboto',
-                        ),
-                          hintText: 'Email',
-                        ),
-                        ),
+                        const TextfieldLoginRegistration(hint: 'Email'),
                         const SizedBox(height: 40),
-                        const TextField(
-                          decoration: InputDecoration(
-                          hintStyle: TextStyle(
-                          fontFamily: 'Roboto',
-                        ),
-                          hintText: 'Password',
-                        ),
-                        ),
+                        const TextfieldLoginRegistration(hint: 'Password'),
                         const SizedBox(height: 50),
-                        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            fixedSize: const Size(220, 60),
+                        StartupElevatedButton(
+                            onPressed: () { },
+                            text: "Login",
                             backgroundColor: Colors.black,
-                            foregroundColor: Colors.white,
-                          ),
-                          onPressed: () {},
-                          child: const Text(
-                              'Sign In',
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontFamily: 'Roboto',
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold,
-                              )
-                          ),
+                            foregroundColor: Colors.white
                         ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                          const Text(
-                            "Already have an account?",
-                            style: TextStyle(
-                            fontFamily: 'Roboto',
-                            ),
-                          ),
-                          TextButton(
+                        HaveAccountLoginSignup(
+                            text1: "Don't have an account?",
+                            text2: "Sign Up",
                             onPressed: () {
                               Navigator.pushNamed(context, '/signup');
-                            },
-                            child: const Text(
-                              "Sign Up",
-                              style: TextStyle(
-                              fontFamily: 'Roboto',
-                              color: Colors.black,
-                              ),
-                            ),
-                          ),
-                    ]
-              ),]
+                            }
+                        ),]
         ),),
         ]
     )

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_skillswap/customWidgets/startup_elevated_button.dart';
 
 class StartupView extends StatelessWidget {
   const StartupView({super.key});
@@ -33,53 +34,22 @@ class StartupView extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 30),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(20)
-                    ),
-                    fixedSize: const Size(240, 70),
-                    backgroundColor: Colors.black,
-                    foregroundColor: Colors.white,
-                  ),
-                  onPressed: () {
-                    Navigator.pushNamed(context, '/signup');
+                //Custom Elevated Button
+                StartupElevatedButton(onPressed: () {
+                  Navigator.pushNamed(context, '/signup');
                   },
-                  child: const Text(
-                    "Skill Seeker",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Roboto',
-                    ),
-                  ),
+                  text: "Skill Seeker",
+                  backgroundColor: Colors.black,
+                  foregroundColor: Colors.white,
                 ),
                 const SizedBox(height: 30),
-                ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)
-                    ),
-                    fixedSize: const Size(240, 70),
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.black,
-                  ),
-                  onPressed: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => const StartupView())
-                    );
+                //Custom Elevated Button
+                StartupElevatedButton(onPressed: () {
+                  Navigator.pushNamed(context, '/signup');
                   },
-                  child: const Text(
-                    "Skill Provider",
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                      fontFamily: 'Roboto',
-                    ),
-                  ),
+                  text: "Skill Sharer",
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.black,
                 ),
               ],
                 ),

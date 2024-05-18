@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:project_skillswap/startup.dart';
 
 class OnboardView extends StatefulWidget {
   const OnboardView({super.key});

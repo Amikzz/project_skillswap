@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:project_skillswap/customWidgets/haveanaccount_login_signup.dart';
+import 'package:project_skillswap/customWidgets/textfield_login_signup.dart';
+import 'package:project_skillswap/customWidgets/startup_elevated_button.dart';
 
 class SignupView extends StatelessWidget {
   const SignupView({super.key});
@@ -24,118 +27,36 @@ class SignupView extends StatelessWidget {
               padding: const EdgeInsets.all(25.0),
               child: Column(
                   children: [
-                    const TextField(
-                      decoration: InputDecoration(
-                        hintStyle: TextStyle(
-                          fontFamily: 'Roboto',
-                        ),
-                        hintText: 'Name',
-                      ),
-                    ),
+                    const TextfieldLoginRegistration(hint: 'Name'),
                     const SizedBox(height: 25),
-                    const TextField(
-                      decoration: InputDecoration(
-                        hintStyle: TextStyle(
-                        fontFamily: 'Roboto',
-                      ),
-                        hintText: 'Email',
-                      ),
-                    ),
+                    const TextfieldLoginRegistration(hint: 'Email'),
                     const SizedBox(height: 25),
-                    const TextField(
-                      decoration: InputDecoration(
-                        hintStyle: TextStyle(
-                          fontFamily: 'Roboto',
-                        ),
-                        hintText: 'Password',
-                      ),
-                    ),
+                    const TextfieldLoginRegistration(hint: 'Password'),
                     const SizedBox(height: 25),
-                    const TextField(
-                      decoration: InputDecoration(
-                        hintStyle: TextStyle(
-                          fontFamily: 'Roboto',
-                        ),
-                        hintText: 'Confirm Password',
-                      ),
-                    ),
+                    const TextfieldLoginRegistration(hint: 'Confirm Password'),
                     const SizedBox(height: 25),
-                    const TextField(
-                      decoration: InputDecoration(
-                        hintStyle: TextStyle(
-                          fontFamily: 'Roboto',
-                        ),
-                        hintText: 'Phone',
-                      ),
-                    ),
+                    const TextfieldLoginRegistration(hint: 'Phone Number'),
                     const SizedBox(height: 25),
-                    const TextField(
-                      decoration: InputDecoration(
-                        hintStyle: TextStyle(
-                          fontFamily: 'Roboto',
-                        ),
-                        hintText: 'Address',
-                      ),
-                    ),
+                    const TextfieldLoginRegistration(hint: 'Address'),
                     const SizedBox(height: 25),
-                    const TextField(
-                      decoration: InputDecoration(
-                        hintStyle: TextStyle(
-                          fontFamily: 'Roboto',
-                        ),
-                        hintText: 'Date of birth',
-                      ),
-                    ),
+                    const TextfieldLoginRegistration(hint: 'Date of birth'),
                     const SizedBox(height: 25),
-                    ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20),
-                        ),
-                        fixedSize: const Size(220, 60),
+                    StartupElevatedButton(
+                        onPressed: () { },
+                        text: "Sign Up",
                         backgroundColor: Colors.black,
-                        foregroundColor: Colors.white,
-                      ),
-                      onPressed: () {},
-                      child: const Text(
-                          'Sign Up',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontFamily: 'Roboto',
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                          )
-                      ),
+                        foregroundColor: Colors.white
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          "Already have an account?",
-                          style: TextStyle(
-                            fontFamily: 'Roboto',
-                          ),
-                        ),
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pushNamed(context, '/login');
-                          },
-                          child: const Text(
-                            "Login",
-                            style: TextStyle(
-                              fontFamily: 'Roboto',
-                              color: Colors.black,
-                            ),
-                          ),
-                        ),
-                  ],
-                ),
-          ],
-            ),
+                    HaveAccountLoginSignup(
+                        text1: "Already have an account?",
+                        text2: "Login",
+                        onPressed: () {
+                          Navigator.pushNamed(context, '/login');
+                        }
+                    ),
+          ],),
         ),
-        ]
-        )
+        ],)
       );
   }
 }
