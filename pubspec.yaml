@@ -62,7 +62,6 @@ flutter:
   assets:
      - images/SkillSwap-removebg-preview.png
      - images/onboardimg.png
-     - images/SkillSwapIcon.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

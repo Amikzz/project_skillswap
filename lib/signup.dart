@@ -3,8 +3,15 @@ import 'package:project_skillswap/customWidgets/haveanaccount_login_signup.dart'
 import 'package:project_skillswap/customWidgets/textfield_login_signup.dart';
 import 'package:project_skillswap/customWidgets/startup_elevated_button.dart';
 
-class SignupView extends StatelessWidget {
+class SignupView extends StatefulWidget {
   const SignupView({super.key});
+
+  @override
+  State<SignupView> createState() => _SignupViewState();
+}
+
+class _SignupViewState extends State<SignupView> {
+  TextEditingController datePicker = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -27,20 +34,57 @@ class SignupView extends StatelessWidget {
               padding: const EdgeInsets.all(25.0),
               child: Column(
                   children: [
-                    const TextfieldLoginRegistration(hint: 'Name'),
-                    const SizedBox(height: 25),
+                    const TextfieldLoginRegistration(hint: 'Name',),
+                    const SizedBox(height: 5),
                     const TextfieldLoginRegistration(hint: 'Email'),
-                    const SizedBox(height: 25),
-                    const TextfieldLoginRegistration(hint: 'Password'),
-                    const SizedBox(height: 25),
-                    const TextfieldLoginRegistration(hint: 'Confirm Password'),
-                    const SizedBox(height: 25),
+                    const SizedBox(height: 5),
+                    const TextfieldLoginRegistration(
+                        hint: 'Password',
+                        isPassword: true,
+                    ),
+                    const SizedBox(height: 5),
+                    const TextfieldLoginRegistration(
+                        hint: 'Confirm Password',
+                        isPassword: true,
+                    ),
+                    const SizedBox(height: 10),
                     const TextfieldLoginRegistration(hint: 'Phone Number'),
-                    const SizedBox(height: 25),
+                    const SizedBox(height: 5),
                     const TextfieldLoginRegistration(hint: 'Address'),
-                    const SizedBox(height: 25),
-                    const TextfieldLoginRegistration(hint: 'Date of birth'),
-                    const SizedBox(height: 25),
+                    const SizedBox(height: 5),
+                    TextField(
+                      decoration: InputDecoration(
+                        hintText: 'Date of Birth',
+                        hintStyle: const TextStyle(
+                          color: Colors.grey,
+                          fontSize: 15,
+                          fontFamily: 'Roboto',
+                        ),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(20),
+                          borderSide: const BorderSide(
+                            color: Colors.black,
+                          ),
+                        ),
+                      ),
+                      controller: datePicker,
+                      onTap: () {
+                        showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(1900),
+                          lastDate: DateTime(2100),
+                        ).then((value) {
+                          if (value != null) {
+                            datePicker.text = value.toString().substring(0, 10);
+                          }
+                        });
+                      },
+                    ),
+                    const SizedBox(height: 10),
                     StartupElevatedButton(
                         onPressed: () { },
                         text: "Sign Up",

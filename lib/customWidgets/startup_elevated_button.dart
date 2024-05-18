@@ -13,7 +13,7 @@ class StartupElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
@@ -27,7 +27,7 @@ class StartupElevatedButton extends StatelessWidget {
           style: TextStyle(
             color: foregroundColor,
             fontFamily: 'Roboto',
-            fontSize: 15,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
           )
       ),

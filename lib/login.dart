@@ -28,7 +28,7 @@ class LoginView extends StatelessWidget {
                   child: Column(
                       children: [
                         const TextfieldLoginRegistration(hint: 'Email'),
-                        const SizedBox(height: 40),
+                        const SizedBox(height: 20),
                         const TextfieldLoginRegistration(hint: 'Password'),
                         const SizedBox(height: 50),
                         StartupElevatedButton(
