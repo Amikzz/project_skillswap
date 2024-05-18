@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:project_skillswap/onboard.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -17,23 +16,17 @@ class _SplashState extends State<Splash> {
 
   _navigateToHome() async {
     await Future.delayed(const Duration(seconds: 3), () {});
-    Navigator.pushReplacement(
-        context,
-        MaterialPageRoute(builder: (context) => const OnboardView())
-    );
+    Navigator.pushNamed(context, '/onboard');
   }
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-    home: Scaffold(
+    return const Scaffold(
       body: Center(
           child: Image(
             image: AssetImage('images/SkillSwap-removebg-preview.png')
           )
       ),
-    ),
-        debugShowCheckedModeBanner: false,
     );
   }
 }

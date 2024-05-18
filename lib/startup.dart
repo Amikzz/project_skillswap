@@ -5,8 +5,7 @@ class StartupView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         body: Center(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
@@ -26,7 +25,7 @@ class StartupView extends StatelessWidget {
                 ),
                 const SizedBox(height: 30),
                 const Text(
-                  "Login as a",
+                  "Register as a",
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
@@ -45,10 +44,7 @@ class StartupView extends StatelessWidget {
                     foregroundColor: Colors.white,
                   ),
                   onPressed: () {
-                    Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(builder: (context) => const StartupView())
-                    );
+                    Navigator.pushNamed(context, '/signup');
                   },
                   child: const Text(
                     "Skill Seeker",
@@ -89,8 +85,6 @@ class StartupView extends StatelessWidget {
                 ),
           ),
           )
-        ),
-      debugShowCheckedModeBanner: false,
-    );
+        );
   }
 }

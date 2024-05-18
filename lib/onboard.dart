@@ -20,18 +20,14 @@ class _OnboardViewState extends State<OnboardView> {
         buttonText = "Get Started";
       }
       else{
-        Navigator.pushReplacement(
-            context,
-            MaterialPageRoute(builder: (context) => const StartupView())
-        );
+        Navigator.pushNamed(context, '/startup');
       }
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-    home: Scaffold(
+    return Scaffold(
       body: Center(
           child: Padding(
             padding: const EdgeInsets.all(20.0),
@@ -81,8 +77,6 @@ class _OnboardViewState extends State<OnboardView> {
             ),
           )
       ),
-    ),
-      debugShowCheckedModeBanner: false,
     );
   }
 }
