@@ -12,10 +12,12 @@ class StartupView extends StatelessWidget {
             padding: const EdgeInsets.all(20.0),
             child: Column(
               children: [
+                const SizedBox(height: 30),
                 const Image(
-                  image: AssetImage('images/onboardimg.png')
+                  image: AssetImage('images/onboardimg3.png'),
+                  fit: BoxFit.cover,
                 ),
-                const SizedBox(height: 100),
+                const SizedBox(height: 60),
                 const Text(
                   "Welcome to SkillSwap",
                   style: TextStyle(
@@ -36,16 +38,16 @@ class StartupView extends StatelessWidget {
                 const SizedBox(height: 30),
                 //Custom Elevated Button
                 StartupElevatedButton(onPressed: () {
-                  Navigator.pushNamed(context, '/signup');
+                  Navigator.pushNamed(context, '/login');
                   },
                   text: "Skill Seeker",
                   backgroundColor: Colors.black,
                   foregroundColor: Colors.white,
                 ),
-                const SizedBox(height: 30),
+                const SizedBox(height: 20),
                 //Custom Elevated Button
                 StartupElevatedButton(onPressed: () {
-                  Navigator.pushNamed(context, '/signup');
+                  Navigator.pushNamed(context, '/login');
                   },
                   text: "Skill Sharer",
                   backgroundColor: Colors.white,

@@ -13,6 +13,7 @@ class StartupElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
+        animationDuration: const Duration(milliseconds: 1000),
         padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 10),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
@@ -20,6 +21,8 @@ class StartupElevatedButton extends StatelessWidget {
         fixedSize: const Size(220, 60),
         backgroundColor: backgroundColor,
         foregroundColor: foregroundColor,
+        shadowColor: Colors.grey,
+        elevation: 8,
       ),
       onPressed: () { onPressed(); },
       child: Text(

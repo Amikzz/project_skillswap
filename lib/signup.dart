@@ -22,14 +22,21 @@ class _SignupViewState extends State<SignupView> {
       body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const Text("Sign Up",
+            const Text("Welcome to SkillSwap",
               style: TextStyle(
                 fontSize: 30,
                 fontWeight: FontWeight.bold,
                 fontFamily: 'Roboto',
               ),
             ),
-            const Icon(Icons.person_add_alt_1_rounded, size: 70, color: Colors.black),
+            const Text("Register to Get Started",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                fontFamily: 'Roboto',
+              ),
+            ),
+            const SizedBox(height: 30),
             Container(
               padding: const EdgeInsets.all(25.0),
               child: Column(
@@ -47,7 +54,7 @@ class _SignupViewState extends State<SignupView> {
                         hint: 'Confirm Password',
                         isPassword: true,
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 5),
                     const TextfieldLoginRegistration(hint: 'Phone Number'),
                     const SizedBox(height: 5),
                     const TextfieldLoginRegistration(hint: 'Address'),
@@ -84,7 +91,7 @@ class _SignupViewState extends State<SignupView> {
                         });
                       },
                     ),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 20),
                     StartupElevatedButton(
                         onPressed: () { },
                         text: "Sign Up",
