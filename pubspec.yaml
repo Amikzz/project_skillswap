@@ -64,6 +64,12 @@ flutter:
      - images/onboardimg.png
      - images/onboardimg2.png
      - images/onboardimg3.png
+     - images/profilepic.jpg
+     - images/painting.png
+     - images/woodwork.png
+     - images/webdevlop.png
+     - images/copywrite.jpg
+     - images/posterhang.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

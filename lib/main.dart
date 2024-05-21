@@ -4,6 +4,7 @@ import 'package:project_skillswap/onboard.dart';
 import 'package:project_skillswap/startup.dart';
 import 'package:project_skillswap/login.dart';
 import 'package:project_skillswap/signup.dart';
+import 'package:project_skillswap/home.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,8 +29,8 @@ class _MyAppState extends State<MyApp> {
         '/startup': (context) => const StartupView(),
         '/signup': (context) => const SignupView(),
         '/login': (context) => const LoginView(),
+        '/home': (context) => const MyHome(),
       },
-
       debugShowCheckedModeBanner: false,
     );
   }
