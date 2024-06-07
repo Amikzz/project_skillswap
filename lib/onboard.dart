@@ -16,7 +16,7 @@ class _OnboardViewState extends State<OnboardView> {
   void clickNext() {
     setState(() {
       if (buttonText == "Next") {
-        textHolder = "The Best Platform for Skill Sharing and Skill Hiring";
+        textHolder = "Best Platform for Skill Sharing and Hiring";
         buttonText = "Get Started";
         urlHolder = 'images/onboardimg2.png';
       } else {
@@ -70,15 +70,15 @@ class _OnboardViewState extends State<OnboardView> {
                     ),
                   ),
                 ),
-                const SizedBox(height: 100),
+                const SizedBox(height: 80),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20)),
                     fixedSize: const Size(240, 70),
-                    backgroundColor: Colors.black,
-                    foregroundColor: Colors.white,
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    foregroundColor: Theme.of(context).colorScheme.onPrimary,
                   ),
                   onPressed: clickNext,
                   child: Row(

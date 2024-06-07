@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_skillswap/customWidgets/trending_skill_card.dart';
+import 'package:project_skillswap/customWidgets/bottom_navigation_bar.dart';
 
 class MyHome extends StatefulWidget {
   const MyHome({super.key});
@@ -14,6 +15,7 @@ class _HomeState extends State<MyHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.background,
         body: SafeArea(
           child: ListView(
             padding: const EdgeInsets.all(20.0),
@@ -27,9 +29,8 @@ class _HomeState extends State<MyHome> {
                         onPressed: () {
                           Navigator.pushNamed(context, '/menu');
                         },
-                        backgroundColor: Colors.white,
-                        foregroundColor: Colors.black,
-                        child: const Icon(Icons.menu_book_rounded),
+                      backgroundColor: Theme.of(context).colorScheme.primary,
+                      child: const Icon(Icons.menu_book_rounded),
                         ),
                     const CircleAvatar(
                       radius: 30,
@@ -45,7 +46,6 @@ class _HomeState extends State<MyHome> {
                     style: TextStyle(
                       fontSize: 35,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black,
                       fontFamily: 'Roboto',
                       decoration: TextDecoration.none,
                     ),
@@ -129,7 +129,6 @@ class _HomeState extends State<MyHome> {
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black,
                     fontFamily: 'Roboto',
                   ),
                 ),
@@ -168,56 +167,7 @@ class _HomeState extends State<MyHome> {
           ],
           ),
         ),
-      bottomNavigationBar: Row (
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  selectedScreen = '/home';
-                });
-                Navigator.pushNamed(context, '/home');
-              },
-              iconSize: 35,
-
-              icon: const Icon(Icons.home),
-              color: selectedScreen == '/home' ? Colors.purple : Colors.grey,
-            ),
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  selectedScreen = '/orders';
-                });
-                Navigator.pushNamed(context, '/orders');
-              },
-              iconSize: 30,
-              icon: const Icon(Icons.shopping_cart),
-              color: selectedScreen == '/orders' ? Colors.purple : Colors.grey,
-            ),
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  selectedScreen = '/notifications';
-                });
-                Navigator.pushNamed(context, '/notifications');
-              },
-              iconSize: 30,
-              icon: const Icon(Icons.notifications),
-              color: selectedScreen == '/notifications' ? Colors.purple : Colors.grey,
-            ),
-            IconButton(
-              onPressed: () {
-                setState(() {
-                  selectedScreen = '/profile';
-                });
-                Navigator.pushNamed(context, '/profile');
-              },
-              iconSize: 30,
-              icon: const Icon(Icons.person),
-              color: selectedScreen == '/profile' ? Colors.purple : Colors.grey,
-            ),
-          ],
-        ),
+      bottomNavigationBar: MyBottomNavigationBar(selectedScreen: selectedScreen),
       );
   }
 }

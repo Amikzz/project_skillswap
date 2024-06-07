@@ -13,7 +13,8 @@ class TrendingCard extends StatelessWidget {
       onPressed: () {},
       style: ElevatedButton.styleFrom(
         padding: const EdgeInsets.all(10),
-        backgroundColor: Colors.grey[200],
+        backgroundColor: Theme.of(context).colorScheme.onSecondary,
+        elevation: 2,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
@@ -27,10 +28,10 @@ class TrendingCard extends StatelessWidget {
             const SizedBox(width: 20,),
             Text(
               "$text1 \n$text2",
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 15,
+                color: Theme.of(context).colorScheme.onPrimary,
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
                 fontFamily: 'Roboto',
                 decoration: TextDecoration.none,
               ),

@@ -4,14 +4,19 @@ class TextfieldLoginRegistration extends StatelessWidget {
 
   final String hint;
   final bool isPassword;
+  final IconData icon;
 
-  const TextfieldLoginRegistration({super.key, required this.hint, this.isPassword = false});
+  const TextfieldLoginRegistration({super.key, required this.hint, required this.icon, this.isPassword = false});
 
   @override
   Widget build(BuildContext context) {
     return TextField(
       obscureText: isPassword,
       decoration: InputDecoration(
+        icon: Icon(
+          icon,
+          color: Theme.of(context).colorScheme.onPrimary,
+        ),
         hintText: hint,
         hintStyle: const TextStyle(
           color: Colors.grey,
@@ -23,8 +28,8 @@ class TextfieldLoginRegistration extends StatelessWidget {
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
-          borderSide: const BorderSide(
-            color: Colors.black,
+          borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.secondary,
           ),
         ),
       ),

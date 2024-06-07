@@ -25,9 +25,9 @@ class HaveAccountLoginSignup extends StatelessWidget {
             },
             child: Text(
               text2,
-              style: const TextStyle(
+              style: TextStyle(
                 fontFamily: 'Roboto',
-                color: Colors.black,
+                color: Theme.of(context).colorScheme.onPrimary,
               ),
             ),
           ),

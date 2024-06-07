@@ -22,6 +22,7 @@ class _SplashState extends State<Splash> {
   @override
   Widget build(BuildContext context) {
     return const Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
           child: Image(
             image: AssetImage('images/SkillSwap-removebg-preview.png')

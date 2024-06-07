@@ -43,8 +43,8 @@ class StartupView extends StatelessWidget {
                     Navigator.of(context).push(createRoute());
                     },
                     text: "Skill Seeker",
-                    backgroundColor: Colors.black,
-                    foregroundColor: Colors.white,
+                    backgroundColor: Theme.of(context).colorScheme.primary,
+                    foregroundColor: Theme.of(context).colorScheme.onPrimary,
                   ),
                   const SizedBox(height: 20),
                   //Custom Elevated Button
@@ -52,8 +52,8 @@ class StartupView extends StatelessWidget {
                     Navigator.of(context).push(createRoute());
                     },
                     text: "Skill Sharer",
-                    backgroundColor: Colors.white,
-                    foregroundColor: Colors.black,
+                    backgroundColor: Theme.of(context).colorScheme.secondary,
+                    foregroundColor: Theme.of(context).colorScheme.onSecondary,
                   ),
                 ],
                   ),

@@ -18,30 +18,33 @@ class LoginView extends StatelessWidget {
             children: [
               Column(
                 children: [
+                  const SizedBox(height: 30),
                   const Center(
-                    child: Image(
-                      image: AssetImage(
-                          'images/SkillSwap-removebg-preview.png',
+                    child: Text(
+                      "Welcome to SkillSwap",
+                      style: TextStyle(
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold,
+                        fontFamily: 'Roboto',
                       ),
-                      height: 350,
-                    ),
+                    )
                   ),
                   const SizedBox(height: 30),
                   Container(
                       padding: const EdgeInsets.all(25.0),
                       child: Column(
                           children: [
-                            const TextfieldLoginRegistration(hint: 'Email'),
+                            const TextfieldLoginRegistration(hint: 'Email', icon: Icons.email),
                             const SizedBox(height: 20),
-                            const TextfieldLoginRegistration(hint: 'Password'),
+                            const TextfieldLoginRegistration(hint: 'Password', isPassword: true, icon: Icons.lock),
                             const SizedBox(height: 50),
                             StartupElevatedButton(
                                 onPressed: () {
                                   Navigator.of(context).push(createRoute());
                                 },
                                 text: "Login",
-                                backgroundColor: Colors.black,
-                                foregroundColor: Colors.white
+                                backgroundColor: Theme.of(context).colorScheme.primary,
+                                foregroundColor: Theme.of(context).colorScheme.onPrimary,
                             ),
                             HaveAccountLoginSignup(
                                 text1: "Don't have an account?",
