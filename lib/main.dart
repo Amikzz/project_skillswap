@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_skillswap/skillInfoPages/woodwork.dart';
 import 'package:project_skillswap/splash.dart';
 import 'package:project_skillswap/onboard.dart';
 import 'package:project_skillswap/startup.dart';
@@ -10,6 +11,7 @@ import 'package:project_skillswap/orders.dart';
 import 'package:project_skillswap/notifications.dart';
 import 'package:project_skillswap/instructionsharer.dart';
 import 'package:project_skillswap/profile.dart';
+import 'package:project_skillswap/skillInfoPages/painting.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,6 +45,8 @@ class _MyAppState extends State<MyApp> {
         '/notifications': (context) => const Notifications(),
         '/profile': (context) => const Profile(),
         '/instructions': (context) => const Instructions(),
+        '/trendingpaint': (context) => const Painting(),
+        '/trendingwood': (context) => const WoodWork(),
       },
       debugShowCheckedModeBanner: false,
     );

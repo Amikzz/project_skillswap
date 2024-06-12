@@ -4,13 +4,16 @@ class TrendingCard extends StatelessWidget {
   final String text1;
   final String text2;
   final String image;
+  final void Function() onPressed;
 
-  const TrendingCard({super.key, required this.text1, required this.text2, required this.image});
+  const TrendingCard({super.key, required this.text1, required this.text2, required this.image, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-      onPressed: () {},
+      onPressed: () {
+        onPressed();
+      },
       style: ElevatedButton.styleFrom(
         padding: const EdgeInsets.all(10),
         backgroundColor: Theme.of(context).colorScheme.onSecondary,

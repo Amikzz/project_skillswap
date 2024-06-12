@@ -78,6 +78,20 @@ flutter:
      - images/guitar.png
      - images/message.png
      - images/register.png
+     - images/skillbanner.png
+     - images/painter1.jpg
+     - images/painter2.jpg
+     - images/painter3.jpg
+     - images/painter4.jpg
+     - images/cooking.png
+     - images/yoga.png
+     - images/digitalmarketing.jpg
+     - images/spanishlesson.jpg
+     - images/graphicdesign.png
+     - images/woodworker1.jpg
+     - images/woodworker2.jpg
+     - images/woodworker3.jpeg
+     - images/woodworker4.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

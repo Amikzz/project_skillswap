@@ -77,23 +77,23 @@ class Profile extends StatelessWidget {
                           children: [
                             ProfileCard(title: 'Personal Details', icon: Icons.person),
                             SizedBox(
-                              height: 25,
+                              height: 5,
                             ),
                             ProfileCard(title: 'Settings', icon: Icons.settings),
                             SizedBox(
-                              height:25,
+                              height:5,
                             ),
                             ProfileCard(title: 'Help', icon: Icons.help),
                             SizedBox(
-                              height: 25,
+                              height: 5,
                             ),
                             ProfileCard(title: 'Terms and Conditions', icon: Icons.not_interested),
                             SizedBox(
-                              height: 25,
+                              height: 5,
                             ),
                             ProfileCard(title: 'Your Data', icon: Icons.data_thresholding_outlined),
                             SizedBox(
-                              height: 25,
+                              height: 5,
                             ),
                             ProfileCard(title: 'Log Out', icon: Icons.logout),
                           ],

@@ -14,11 +14,11 @@ class _HomeState extends State<MyHome> {
   String selectedScreen = '/home';
 
   List<Map<String, dynamic>> trending = [
-    {'title': 'Painting', 'subtitle': '1763 Sharers', 'image': 'images/painting.png'},
-    {'title': 'Woodwork', 'subtitle': '1453 Sharers', 'image': 'images/woodwork.png'},
-    {'title': 'Web Development', 'subtitle': '1182 Sharers', 'image': 'images/webdevlop.png'},
-    {'title': 'Copy writing', 'subtitle': '987 Sharers', 'image': 'images/copywrite.jpg'},
-    {'title': 'Poster Hanging', 'subtitle': '987 Sharers', 'image': 'images/posterhang.jpg'}
+    {'title': 'Painting', 'subtitle': '1763 Sharers', 'image': 'images/painting.png', 'onPressed': () {}},
+    {'title': 'Woodwork', 'subtitle': '1453 Sharers', 'image': 'images/woodwork.png', 'onPressed': () {}},
+    {'title': 'Web Development', 'subtitle': '1182 Sharers', 'image': 'images/webdevlop.png', 'onPressed': () {}},
+    {'title': 'Copy writing', 'subtitle': '987 Sharers', 'image': 'images/copywrite.jpg', 'onPressed': () {}},
+    {'title': 'Poster Hanging', 'subtitle': '987 Sharers', 'image': 'images/posterhang.jpg', 'onPressed': () {}}
   ];
 
   void _showMenu(BuildContext context) {
@@ -33,6 +33,22 @@ class _HomeState extends State<MyHome> {
 
   @override
   Widget build(BuildContext context) {
+    trending[0]['onPressed'] = () {
+      Navigator.pushNamed(context, '/trendingpaint');
+    };
+    trending[1]['onPressed'] = () {
+      Navigator.pushNamed(context, '/trendingwood');
+    };
+    trending[2]['onPressed'] = () {
+      Navigator.pushNamed(context, '/trendingweb');
+    };
+    trending[3]['onPressed'] = () {
+      Navigator.pushNamed(context, '/trendingcopy');
+    };
+    trending[4]['onPressed'] = () {
+      Navigator.pushNamed(context, '/trendingposter');
+    };
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
         body: SafeArea(
@@ -157,7 +173,7 @@ class _HomeState extends State<MyHome> {
                 for (var skill in trending)
                   Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: TrendingCard(text1: skill['title'], text2: skill['subtitle'], image: skill['image']),
+                    child: TrendingCard(text1: skill['title'], text2: skill['subtitle'], image: skill['image'], onPressed: skill['onPressed']),
                   )
                 ],
             ),

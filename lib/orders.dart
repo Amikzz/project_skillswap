@@ -12,10 +12,10 @@ class Orders extends StatefulWidget {
 class _MyCartState extends State<Orders> {
 
   List<Map<String, dynamic>> orders = [
-    {'title': 'Painting', 'image': 'images/painting.png', 'worker': 'John Doe', 'status': 'In Progress', 'statusColor': Colors.green, 'price': 10000.00},
-    {'title': 'Electrical', 'image': 'images/electrical.png', 'worker': 'Steve Smith', 'status': 'In Progress', 'statusColor': Colors.green, 'price': 8000.00},
-    {'title': 'Plumbing', 'image': 'images/plumbing.jpg', 'worker': 'Peter Parker', 'status': 'Completed', 'statusColor': Colors.blue, 'price': 5000.00},
-    {'title': 'Woodwork', 'image': 'images/woodwork.png', 'worker': 'Tony Stark', 'status': 'Completed', 'statusColor': Colors.blue, 'price': 7000.00}
+    {'title': 'Painting', 'image': 'images/painting.png', 'worker': 'Sujith Gunasinghe', 'status': 'In Progress', 'statusColor': Colors.green, 'price': 10000.00},
+    {'title': 'Electrical', 'image': 'images/electrical.png', 'worker': 'Kamal Perera', 'status': 'In Progress', 'statusColor': Colors.green, 'price': 8000.00},
+    {'title': 'Plumbing', 'image': 'images/plumbing.jpg', 'worker': 'Hirantha Kumara', 'status': 'Completed', 'statusColor': Colors.blue, 'price': 5000.00},
+    {'title': 'Woodwork', 'image': 'images/woodwork.png', 'worker': 'Dilshan Bandara', 'status': 'Completed', 'statusColor': Colors.blue, 'price': 7000.00}
   ];
 
   String selectedScreen = '/orders';
