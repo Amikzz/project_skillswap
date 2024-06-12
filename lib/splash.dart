@@ -21,12 +21,18 @@ class _SplashState extends State<Splash> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.white,
+    // Detect current brightness (light or dark mode)
+    final brightness = MediaQuery.of(context).platformBrightness;
+    final isDarkMode = brightness == Brightness.dark;
+
+    return Scaffold(
+      backgroundColor: isDarkMode ? Colors.black : Colors.white,
       body: Center(
-          child: Image(
-            image: AssetImage('images/SkillSwap-removebg-preview.png')
-          )
+        child: Image.asset(
+          isDarkMode
+              ? 'images/SkillSwap_Logo_Dark.png'
+              : 'images/SkillSwap_Logo_Light.png',
+        ),
       ),
     );
   }

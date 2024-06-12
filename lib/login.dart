@@ -18,7 +18,11 @@ class LoginView extends StatelessWidget {
             children: [
               Column(
                 children: [
-                  const SizedBox(height: 30),
+                  Image.asset(
+                    'images/loginpage.png',
+                    width: 350,
+                    height: 350,
+                  ),
                   const Center(
                     child: Text(
                       "Welcome to SkillSwap",
@@ -29,7 +33,7 @@ class LoginView extends StatelessWidget {
                       ),
                     )
                   ),
-                  const SizedBox(height: 30),
+                  const SizedBox(height: 10),
                   Container(
                       padding: const EdgeInsets.all(25.0),
                       child: Column(

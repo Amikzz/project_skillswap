@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:project_skillswap/customWidgets/trending_skill_card.dart';
 import 'package:project_skillswap/customWidgets/bottom_navigation_bar.dart';
+import 'package:project_skillswap/fabmenu.dart';
 
 class MyHome extends StatefulWidget {
   const MyHome({super.key});
@@ -11,6 +12,24 @@ class MyHome extends StatefulWidget {
 
 class _HomeState extends State<MyHome> {
   String selectedScreen = '/home';
+
+  List<Map<String, dynamic>> trending = [
+    {'title': 'Painting', 'subtitle': '1763 Sharers', 'image': 'images/painting.png'},
+    {'title': 'Woodwork', 'subtitle': '1453 Sharers', 'image': 'images/woodwork.png'},
+    {'title': 'Web Development', 'subtitle': '1182 Sharers', 'image': 'images/webdevlop.png'},
+    {'title': 'Copy writing', 'subtitle': '987 Sharers', 'image': 'images/copywrite.jpg'},
+    {'title': 'Poster Hanging', 'subtitle': '987 Sharers', 'image': 'images/posterhang.jpg'}
+  ];
+
+  void _showMenu(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
+      ),
+      builder: (context) => const MenuBottomSheet(),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +46,7 @@ class _HomeState extends State<MyHome> {
                   children: [
                     FloatingActionButton(
                         onPressed: () {
-                          Navigator.pushNamed(context, '/menu');
+                          _showMenu(context);
                         },
                       backgroundColor: Theme.of(context).colorScheme.primary,
                       child: const Icon(Icons.menu_book_rounded),
@@ -93,7 +112,9 @@ class _HomeState extends State<MyHome> {
                       Container(
                         alignment: Alignment.centerLeft,
                         child: ElevatedButton(
-                            onPressed: () { },
+                            onPressed: () {
+                              Navigator.pushNamed(context, '/instructions');
+                            },
                             style: ElevatedButton.styleFrom(
                               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                               shape: RoundedRectangleBorder(
@@ -123,7 +144,7 @@ class _HomeState extends State<MyHome> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 20),
+                const SizedBox(height: 30),
                 const Text(
                   "Trending Skills",
                   style: TextStyle(
@@ -132,37 +153,13 @@ class _HomeState extends State<MyHome> {
                     fontFamily: 'Roboto',
                   ),
                 ),
-                const SizedBox(height: 20),
-                const TrendingCard(
-                    text1: "Painting",
-                    text2: "1763 Sharers",
-                    image: 'images/painting.png',
-                ),
-                const SizedBox(height: 20),
-                const TrendingCard(
-                  text1: "Woodwork",
-                  text2: "1453 Sharers",
-                  image: 'images/woodwork.png',
-                ),
-                const SizedBox(height: 20),
-                const TrendingCard(
-                  text1: "Web Development",
-                  text2: "1182 Sharers",
-                  image: 'images/webdevlop.png',
-                ),
-                const SizedBox(height: 20),
-                const TrendingCard(
-                  text1: "Copy writing",
-                  text2: "987 Sharers",
-                  image: 'images/copywrite.jpg',
-                ),
-                const SizedBox(height: 20),
-                const TrendingCard(
-                  text1: "Poster Hanging",
-                  text2: "987 Sharers",
-                  image: 'images/posterhang.jpg',
-                ),
-            ],
+                const SizedBox(height: 5),
+                for (var skill in trending)
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: TrendingCard(text1: skill['title'], text2: skill['subtitle'], image: skill['image']),
+                  )
+                ],
             ),
           ],
           ),
