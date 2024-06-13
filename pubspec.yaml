@@ -92,6 +92,14 @@ flutter:
      - images/woodworker2.jpg
      - images/woodworker3.jpeg
      - images/woodworker4.jpg
+     - images/webdev1.jpeg
+     - images/webdev2.jpeg
+     - images/webdev3.jpg
+     - images/webdev4.jpg
+     - images/copywrite1.jpg
+     - images/copywrite2.jpg
+     - images/posterhang1.jpg
+     - images/posthang2.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

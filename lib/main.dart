@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:project_skillswap/skillInfoPages/copywriting.dart';
+import 'package:project_skillswap/skillInfoPages/posterhanging.dart';
+import 'package:project_skillswap/skillInfoPages/webdevelopment.dart';
 import 'package:project_skillswap/skillInfoPages/woodwork.dart';
 import 'package:project_skillswap/splash.dart';
 import 'package:project_skillswap/onboard.dart';
@@ -47,9 +50,11 @@ class _MyAppState extends State<MyApp> {
         '/instructions': (context) => const Instructions(),
         '/trendingpaint': (context) => const Painting(),
         '/trendingwood': (context) => const WoodWork(),
+        '/trendingweb': (context) => const WebDevelopment(),
+        '/trendingposter': (context) => const PosterHanging(),
+        '/trendingcopy': (context) => const CopyWriting(),
       },
       debugShowCheckedModeBanner: false,
     );
   }
 }
-
