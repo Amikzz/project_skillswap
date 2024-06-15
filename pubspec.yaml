@@ -63,14 +63,13 @@ flutter:
   assets:
      - images/SkillSwap_Logo_Light.png
      - images/SkillSwap_Logo_Dark.png
-     - images/onboardimg.png
-     - images/onboardimg2.png
-     - images/onboardimg3.png
+     - images/onboard.gif
+     - images/onboard2.gif
      - images/profilepic.jpg
      - images/painting.png
      - images/woodwork.png
      - images/webdevlop.png
-     - images/copywrite.jpg
+     - images/copywrite.png
      - images/posterhang.jpg
      - images/electrical.png
      - images/plumbing.jpg
@@ -85,8 +84,8 @@ flutter:
      - images/painter4.jpg
      - images/cooking.png
      - images/yoga.png
-     - images/digitalmarketing.jpg
-     - images/spanishlesson.jpg
+     - images/digitalmarketing.png
+     - images/spanishlesson.png
      - images/graphicdesign.png
      - images/woodworker1.jpg
      - images/woodworker2.jpg

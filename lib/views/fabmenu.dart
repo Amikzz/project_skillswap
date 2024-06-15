@@ -16,6 +16,14 @@ class _MenuBottomSheetState extends State<MenuBottomSheet> {
 
   @override
   Widget build(BuildContext context) {
+
+    menuItems[0]['ontap'] = () {
+      Navigator.pushNamed(context, '/categories');
+    };
+    menuItems[1]['ontap'] = () {
+      Navigator.pushNamed(context, '/allskills');
+    };
+
     return Container(
       padding: const EdgeInsets.all(16.0),
       decoration: BoxDecoration(
@@ -33,7 +41,7 @@ class _MenuBottomSheetState extends State<MenuBottomSheet> {
               leading: Icon(item['icon'], color: Theme.of(context).colorScheme.onPrimary),
               title: Text(item['title'], style: TextStyle(color: Theme.of(context).colorScheme.onPrimary)),
               onTap: () {
-                Navigator.pop(context);
+                item['ontap']();
               },
             ),
         ],

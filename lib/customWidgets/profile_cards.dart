@@ -13,7 +13,7 @@ class ProfileCard extends StatelessWidget {
       onPressed: () {},
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(Theme.of(context).colorScheme.background),
-          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(const EdgeInsets.all(20)),
+          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(const EdgeInsets.all(15)),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
               RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(10)

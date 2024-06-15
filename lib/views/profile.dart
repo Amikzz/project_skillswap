@@ -72,7 +72,7 @@ class Profile extends StatelessWidget {
                         thickness: 3,
                       ),
                       const Padding(
-                        padding: EdgeInsets.all(30.0),
+                        padding: EdgeInsets.all(20.0),
                         child: Column(
                           children: [
                             ProfileCard(title: 'Personal Details', icon: Icons.person),

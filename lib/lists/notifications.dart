@@ -1,0 +1,17 @@
+List<Map<String, dynamic>> notifications = [
+  {'title': 'Skill Request', 'subtitle': 'Sujith Gunasinghe has requested a session for Painting.', 'image': 'images/painting.png'},
+  {'title': 'Skill Offer', 'subtitle': 'Tharindu Liyanage has offered a session for Web Development.', 'image': 'images/webdevlop.png'},
+  {'title': 'Session Confirmation', 'subtitle': 'Your session with Ranjith De Silva for Guitar Lessons has been confirmed.', 'image': 'images/guitar.png'},
+  {'title': 'New Message', 'subtitle': 'You have a new message from Emily Ruwan Jayasinghe.', 'image': 'images/message.png'},
+  {'title': 'New Message', 'subtitle': 'You have a new message from Sujith Gunasinghe.', 'image': 'images/message.png'},
+  {'title': 'Skill Request', 'subtitle': 'Chathura Rathnayaka has requested a session for Cooking.', 'image': 'images/cooking.png'},
+  {'title': 'Skill Offer', 'subtitle': 'Mahesh Senanayaka has offered a session for Data Science.', 'image': 'images/webdevlop.png'},
+  {'title': 'Session Confirmation', 'subtitle': 'Your session with Ruwanthi Jayawardana for Yoga Lessons has been confirmed.', 'image': 'images/yoga.png'},
+  {'title': 'New Message', 'subtitle': 'You have a new message from Ranjith De Silva.', 'image': 'images/message.png'},
+  {'title': 'New Message', 'subtitle': 'You have a new message from Priya Rajapaksha.', 'image': 'images/message.png'},
+  {'title': 'Skill Request', 'subtitle': 'Olivia Johnson has requested a session for Digital Marketing.', 'image': 'images/digitalmarketing.png'},
+  {'title': 'Skill Offer', 'subtitle': 'Ishara Nanayakkkara has offered a session for Graphic Design.', 'image': 'images/graphicdesign.png'},
+  {'title': 'Session Confirmation', 'subtitle': 'Your session with Linda Carter for Spanish Lessons has been confirmed.', 'image': 'images/spanishlesson.png'},
+  {'title': 'New Message', 'subtitle': 'You have a new message from Rajesh Kumar.', 'image': 'images/message.png'},
+  {'title': 'New Message', 'subtitle': 'You have a new message from Maria Silva.', 'image': 'images/message.png'},
+];
