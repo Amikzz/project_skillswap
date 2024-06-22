@@ -13,6 +13,8 @@ import 'package:project_skillswap/views/notifications.dart';
 import 'package:project_skillswap/views/instructionsharer.dart';
 import 'package:project_skillswap/views/profile.dart';
 
+import 'views/allproviders.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -23,7 +25,6 @@ class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 }
-
 
 class _MyAppState extends State<MyApp> {
 
@@ -47,6 +48,7 @@ class _MyAppState extends State<MyApp> {
         '/instructions': (context) => const Instructions(),
         '/categories': (context) => const SkillCategoriesPage(),
         '/allskills': (context) => const AllSkillsPage(),
+        '/allproviders': (context) => const AllProviderPage(),
       },
       debugShowCheckedModeBanner: false,
     );

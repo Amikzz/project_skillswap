@@ -99,6 +99,7 @@ flutter:
      - images/copywrite2.jpg
      - images/posterhang1.jpg
      - images/posthang2.jpg
+     - images/defaultprofile.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

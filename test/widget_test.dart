@@ -1,30 +1,49 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:project_skillswap/views/main.dart';
-
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  testWidgets('Widget Test Example', (WidgetTester tester) async {
+    // Build a MaterialApp with the widget under test
+    await tester.pumpWidget(const MaterialApp(
+      home: Scaffold(
+        body: MyWidget(),
+      ),
+    ));
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+    // Verify that the widget has the correct text
+    expect(find.text('Hello, World!'), findsOneWidget);
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
+    // Example of interacting with the widget
+    // Tap the widget and trigger a rebuild
+    await tester.tap(find.text('Hello, World!'));
     await tester.pump();
 
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+    // Verify that the widget shows new text after interaction
+    expect(find.text('Changed!'), findsOneWidget);
   });
+}
+
+// Example widget to test
+class MyWidget extends StatefulWidget {
+
+  const MyWidget({super.key});
+
+  @override
+  _MyWidgetState createState() => _MyWidgetState();
+}
+
+class _MyWidgetState extends State<MyWidget> {
+  String text = 'Hello, World!';
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          text = 'Changed!';
+        });
+      },
+      child: Text(text),
+    );
+  }
 }

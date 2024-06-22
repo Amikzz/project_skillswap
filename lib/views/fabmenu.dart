@@ -23,6 +23,9 @@ class _MenuBottomSheetState extends State<MenuBottomSheet> {
     menuItems[1]['ontap'] = () {
       Navigator.pushNamed(context, '/allskills');
     };
+    menuItems[2]['ontap'] = () {
+      Navigator.pushNamed(context, '/allproviders');
+    };
 
     return Container(
       padding: const EdgeInsets.all(16.0),
