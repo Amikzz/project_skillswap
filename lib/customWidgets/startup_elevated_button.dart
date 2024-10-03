@@ -1,13 +1,20 @@
 import 'package:flutter/material.dart';
 
 class StartupElevatedButton extends StatelessWidget {
-
-  final void Function() onPressed;
+  final void Function()? onPressed;
   final String text;
   final Color? backgroundColor;
   final Color? foregroundColor;
+  final bool isLoading; // New property to check if loading
 
-  const StartupElevatedButton({super.key, required this.onPressed, required this.text, this.backgroundColor, this.foregroundColor});
+  const StartupElevatedButton({
+    super.key,
+    required this.onPressed,
+    required this.text,
+    this.backgroundColor,
+    this.foregroundColor,
+    this.isLoading = false, // Default value to false
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,15 +31,17 @@ class StartupElevatedButton extends StatelessWidget {
         shadowColor: Colors.grey,
         elevation: 8,
       ),
-      onPressed: () { onPressed(); },
-      child: Text(
-          text,
-          style: TextStyle(
-            color: foregroundColor,
-            fontFamily: 'Roboto',
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          )
+      onPressed: isLoading ? null : onPressed, // Disable while loading
+      child: isLoading
+          ? const CircularProgressIndicator(color: Colors.white)
+          : Text(
+        text,
+        style: TextStyle(
+          color: foregroundColor,
+          fontFamily: 'Roboto',
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
