@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:project_skillswap/customWidgets/haveanaccount_login_signup.dart';
 import 'package:project_skillswap/customWidgets/startup_elevated_button.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignupView extends StatefulWidget {
   const SignupView({super.key});
@@ -23,7 +24,13 @@ class _SignupViewState extends State<SignupView> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController addressController = TextEditingController();
 
-  // This function will handle sending the form data to the backend
+  // Function to save token to local storage
+  Future<void> _saveToken(String token) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setString('token', token);
+  }
+
+  // This function handles registration and auto-login
   Future<void> _registerUser() async {
     if (_formKey.currentState!.validate()) {
       setState(() {
@@ -50,10 +57,19 @@ class _SignupViewState extends State<SignupView> {
         );
 
         if (response.statusCode == 201) {
+          var responseBody = jsonDecode(response.body);
+          String token = responseBody['token']; // Assuming the token is in the response
+
+          // Save token in local storage
+          await _saveToken(token);
+          print("Token saved: $token");
+
           ScaffoldMessenger.of(context).showSnackBar(
             const SnackBar(content: Text('Registration successful')),
           );
-          Navigator.pushNamed(context, '/login');
+
+          // Navigate to home page
+          Navigator.pushReplacementNamed(context, '/home');
         } else {
           var errorMessage = jsonDecode(response.body)['message'] ?? 'Registration failed';
           ScaffoldMessenger.of(context).showSnackBar(
