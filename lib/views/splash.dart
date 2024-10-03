@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Splash extends StatefulWidget {
   const Splash({super.key});
@@ -11,12 +12,24 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     super.initState();
-    _navigateToHome();
+    _navigateToNextPage();
   }
 
-  _navigateToHome() async {
+  Future<void> _navigateToNextPage() async {
+    // Simulate loading time (e.g., 3 seconds for the splash screen)
     await Future.delayed(const Duration(seconds: 3), () {});
-    Navigator.pushNamed(context, '/onboard');
+
+    // Check if a token exists in shared preferences
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token');
+
+    if (token != null && token.isNotEmpty) {
+      // If the token exists, navigate to the home page
+      Navigator.pushReplacementNamed(context, '/home');
+    } else {
+      // Otherwise, navigate to the onboarding screen
+      Navigator.pushReplacementNamed(context, '/onboard');
+    }
   }
 
   @override

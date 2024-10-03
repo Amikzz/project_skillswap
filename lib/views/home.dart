@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -6,6 +7,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:project_skillswap/customWidgets/bottom_navigation_bar.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:image_picker/image_picker.dart'; // For picking images from camera
+import 'package:path_provider/path_provider.dart'; // For accessing local storage
+import 'package:battery_plus/battery_plus.dart'; // Import battery_plus
 
 import 'fabmenu.dart';
 
@@ -21,12 +25,63 @@ class _HomeState extends State<MyHome> {
   List<dynamic> trendingSkills = [];
   bool _isLoading = true;
   String _city = "Fetching city..."; // Variable to hold the city name
+  File? _imageFile; // To store the selected image
+  int _batteryPercentage = 100; // Battery percentage
+
+  final Battery _battery = Battery(); // Create a battery instance
 
   @override
   void initState() {
     super.initState();
     _fetchSkills();
     _getCurrentLocation(); // Fetch user's location when the app starts
+    _loadImage(); // Load the image from local storage when the app starts
+    _getBatteryPercentage(); // Fetch battery percentage when the app starts
+  }
+
+  // Fetch battery percentage
+  Future<void> _getBatteryPercentage() async {
+    final int batteryLevel = await _battery.batteryLevel;
+    setState(() {
+      _batteryPercentage = batteryLevel;
+    });
+  }
+
+  // Load the image from local storage
+  Future<void> _loadImage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? imagePath = prefs.getString('profile_image');
+    if (imagePath != null) {
+      setState(() {
+        _imageFile = File(imagePath);
+      });
+    }
+  }
+
+  // Save the image to local storage
+  Future<void> _saveImage(File image) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    final directory = await getApplicationDocumentsDirectory();
+    final path = directory.path;
+    final fileName = 'profile_image.png';
+    final file = File('$path/$fileName');
+    await file.writeAsBytes(await image.readAsBytes());
+
+    prefs.setString('profile_image', file.path);
+    setState(() {
+      _imageFile = file;
+    });
+  }
+
+  // Function to pick an image from the camera
+  Future<void> _pickImageFromCamera() async {
+    final ImagePicker _picker = ImagePicker();
+    final XFile? image = await _picker.pickImage(source: ImageSource.camera);
+
+    if (image != null) {
+      File imageFile = File(image.path);
+      await _saveImage(imageFile); // Save the image to local storage
+    }
   }
 
   Future<void> _getCurrentLocation() async {
@@ -38,7 +93,7 @@ class _HomeState extends State<MyHome> {
     if (!serviceEnabled) {
       // Location services are not enabled
       setState(() {
-        _city = "Location services are disabled.";
+        _city = "Location services are disable.";
       });
       return;
     }
@@ -193,10 +248,16 @@ class _HomeState extends State<MyHome> {
                       backgroundColor: Theme.of(context).colorScheme.primary,
                       child: const Icon(Icons.menu_book_rounded),
                     ),
-                    const CircleAvatar(
-                      radius: 30,
-                      backgroundImage: AssetImage('images/profilepic.jpg'),
-                    )
+                    GestureDetector(
+                      onTap: _pickImageFromCamera, // Access camera on tap
+                      child: CircleAvatar(
+                        radius: 30,
+                        backgroundImage: _imageFile != null
+                            ? FileImage(_imageFile!) // Display the selected image
+                            : const AssetImage('images/profilepic.jpg')
+                        as ImageProvider, // Fallback to default image
+                      ),
+                    ),
                   ],
                 ),
                 Column(
@@ -221,6 +282,16 @@ class _HomeState extends State<MyHome> {
                         const SizedBox(width: 10),
                         Text(
                           _city, // Display the dynamically fetched city
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontFamily: 'Roboto',
+                          ),
+                        ),
+                        const SizedBox(width: 140),
+                        Icon(Icons.battery_std_rounded, color: Theme.of(context).colorScheme.onPrimary),
+                        const SizedBox(width: 10),
+                        Text(
+                          '$_batteryPercentage%', // Display battery percentage
                           style: const TextStyle(
                             fontSize: 20,
                             fontFamily: 'Roboto',
