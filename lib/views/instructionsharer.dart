@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Instructions extends StatelessWidget {
   const Instructions({super.key});
@@ -28,8 +29,8 @@ class Instructions extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: ListView(
-                        children: const [
-                          Text(
+                        children: [
+                          const Text(
                             'How to Register as a Skill Sharer',
                             style: TextStyle(
                               fontFamily: 'Roboto',
@@ -37,40 +38,40 @@ class Instructions extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 20),
-                          Text(
+                          const SizedBox(height: 20),
+                          const Text(
                             'To register as a skill sharer, please follow these instructions:',
                             style: TextStyle(
                               fontFamily: 'Roboto',
                               fontSize: 18,
                             ),
                           ),
-                          SizedBox(height: 10),
-                          Text(
+                          const SizedBox(height: 10),
+                          const Text(
                             '1. Visit the SkillSwap office.',
                             style: TextStyle(
                               fontFamily: 'Roboto',
                               fontSize: 16,
                             ),
                           ),
-                          SizedBox(height: 5),
-                          Text(
+                          const SizedBox(height: 5),
+                          const Text(
                             '2. Meet with one of our admins.',
                             style: TextStyle(
                               fontFamily: 'Roboto',
                               fontSize: 16,
                             ),
                           ),
-                          SizedBox(height: 5),
-                          Text(
+                          const SizedBox(height: 5),
+                          const Text(
                             '3. Our admins will assist you in completing the registration process.',
                             style: TextStyle(
                               fontFamily: 'Roboto',
                               fontSize: 16,
                             ),
                           ),
-                          SizedBox(height: 20),
-                          Text(
+                          const SizedBox(height: 20),
+                          const Text(
                             'Office Address:',
                             style: TextStyle(
                               fontFamily: 'Roboto',
@@ -78,16 +79,16 @@ class Instructions extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 5),
-                          Text(
+                          const SizedBox(height: 5),
+                          const Text(
                             '123 SkillSwap Avenue,\nColombo, Sri Lanka.',
                             style: TextStyle(
                               fontFamily: 'Roboto',
                               fontSize: 16,
                             ),
                           ),
-                          SizedBox(height: 20),
-                          Text(
+                          const SizedBox(height: 20),
+                          const Text(
                             'Office Hours:',
                             style: TextStyle(
                               fontFamily: 'Roboto',
@@ -95,12 +96,37 @@ class Instructions extends StatelessWidget {
                               fontWeight: FontWeight.bold,
                             ),
                           ),
-                          SizedBox(height: 5),
-                          Text(
+                          const SizedBox(height: 5),
+                          const Text(
                             'Monday - Friday: 9 AM - 5 PM\nSaturday: 10 AM - 2 PM',
                             style: TextStyle(
                               fontFamily: 'Roboto',
                               fontSize: 16,
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          const Text(
+                            'Find Us on the Map:',
+                            style: TextStyle(
+                              fontFamily: 'Roboto',
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 10),
+                          SizedBox(
+                            height: 300,
+                            child: GoogleMap(
+                              initialCameraPosition: const CameraPosition(
+                                target: LatLng(6.9271, 79.8612), // Coordinates for Colombo
+                                zoom: 15,
+                              ),
+                              markers: {
+                                const Marker(
+                                  markerId: MarkerId('office'),
+                                  position: LatLng(6.9271, 79.8612), // Office location marker
+                                ),
+                              },
                             ),
                           ),
                         ],
@@ -192,6 +218,31 @@ class Instructions extends StatelessWidget {
                           style: TextStyle(
                             fontFamily: 'Roboto',
                             fontSize: 16,
+                          ),
+                        ),
+                        const SizedBox(height: 20),
+                        const Text(
+                          'Find Us on the Map:',
+                          style: TextStyle(
+                            fontFamily: 'Roboto',
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        SizedBox(
+                          height: 300,
+                          child: GoogleMap(
+                            initialCameraPosition: const CameraPosition(
+                              target: LatLng(6.92, 79.86), // Coordinates for Colombo
+                              zoom: 15,
+                            ),
+                            markers: {
+                              const Marker(
+                                markerId: MarkerId('office'),
+                                position: LatLng(6.92, 79.86), // Office location marker
+                              ),
+                            },
                           ),
                         ),
                       ],

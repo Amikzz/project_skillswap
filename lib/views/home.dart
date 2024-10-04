@@ -27,6 +27,7 @@ class _HomeState extends State<MyHome> {
   String _city = "Fetching city..."; // Variable to hold the city name
   File? _imageFile; // To store the selected image
   int _batteryPercentage = 100; // Battery percentage
+  String _userName = "..."; // Placeholder for the user's name
 
   final Battery _battery = Battery(); // Create a battery instance
 
@@ -37,6 +38,44 @@ class _HomeState extends State<MyHome> {
     _getCurrentLocation(); // Fetch user's location when the app starts
     _loadImage(); // Load the image from local storage when the app starts
     _getBatteryPercentage(); // Fetch battery percentage when the app starts
+    _fetchProfile(); // Fetch the user profile to get the user's name
+  }
+
+  // Fetch the user's profile
+  Future<void> _fetchProfile() async {
+    try {
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? token = prefs.getString('token'); // Get token from shared preferences
+
+      if (token == null) {
+        throw Exception('Token not found');
+      }
+
+      final response = await http.get(
+        Uri.parse('http://172.20.10.7:8000/api/profile'), // Replace with your profile API endpoint
+        headers: {
+          'Authorization': 'Bearer $token',
+        },
+      );
+
+      if (response.statusCode == 200) {
+        var data = jsonDecode(response.body);
+        if (data['status'] == true) {
+          setState(() {
+            _userName = data['data']['name']; // Update the user name
+          });
+        } else {
+          throw Exception('Failed to load profile');
+        }
+      } else {
+        throw Exception('Failed to fetch profile');
+      }
+    } catch (error) {
+      setState(() {
+        _userName = "Unknown User"; // Fallback in case of error
+      });
+      print('Error fetching profile: $error');
+    }
   }
 
   // Fetch battery percentage
@@ -63,7 +102,7 @@ class _HomeState extends State<MyHome> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final directory = await getApplicationDocumentsDirectory();
     final path = directory.path;
-    final fileName = 'profile_image.png';
+    const fileName = 'profile_image.png';
     final file = File('$path/$fileName');
     await file.writeAsBytes(await image.readAsBytes());
 
@@ -265,9 +304,9 @@ class _HomeState extends State<MyHome> {
                     const SizedBox(height: 30),
                     Container(
                       alignment: Alignment.centerLeft,
-                      child: const Text(
-                        "Welcome back, \nAmika!",
-                        style: TextStyle(
+                      child: Text(
+                        "Welcome back, \n$_userName!", // Display the fetched user name
+                        style: const TextStyle(
                           fontSize: 35,
                           fontWeight: FontWeight.bold,
                           fontFamily: 'Roboto',
@@ -287,14 +326,16 @@ class _HomeState extends State<MyHome> {
                             fontFamily: 'Roboto',
                           ),
                         ),
-                        const SizedBox(width: 140),
+                        const SizedBox(width: 130),
                         Icon(Icons.battery_std_rounded, color: Theme.of(context).colorScheme.onPrimary),
                         const SizedBox(width: 10),
-                        Text(
-                          '$_batteryPercentage%', // Display battery percentage
-                          style: const TextStyle(
-                            fontSize: 20,
-                            fontFamily: 'Roboto',
+                        Expanded(
+                          child: Text(
+                            '$_batteryPercentage%', // Display battery percentage
+                            style: const TextStyle(
+                              fontSize: 20,
+                              fontFamily: 'Roboto',
+                            ),
                           ),
                         ),
                       ],

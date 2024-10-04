@@ -1,7 +1,9 @@
+import 'dart:io'; // Import for using File to display image
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:path_provider/path_provider.dart'; // For accessing the app's document directory
 
 import '../customWidgets/bottom_navigation_bar.dart';
 import '../customWidgets/profile_cards.dart';
@@ -16,6 +18,78 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
   bool _isLoading = false; // Loading state variable
+  File? _profilePhotoFile; // Profile photo file variable
+  String? _name; // Name fetched from the API
+  String? _email; // Email fetched from the API
+
+  @override
+  void initState() {
+    super.initState();
+    _loadProfilePhoto(); // Load the profile photo when the page initializes
+    _fetchProfileData(); // Fetch profile data from the API
+  }
+
+  // Function to load profile photo path from shared preferences and retrieve the file
+  Future<void> _loadProfilePhoto() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? photoPath = prefs.getString('profile_image'); // Fetch the stored photo path
+    if (photoPath != null) {
+      setState(() {
+        _profilePhotoFile = File(photoPath); // Update the profile photo state with the file
+      });
+    }
+  }
+
+  // Function to fetch profile data from the API
+  Future<void> _fetchProfileData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? token = prefs.getString('token'); // Retrieve the token from shared preferences
+
+    if (token != null) {
+      setState(() {
+        _isLoading = true; // Start loading
+      });
+
+      try {
+        // API request to fetch profile data
+        var response = await http.get(
+          Uri.parse('http://172.20.10.7:8000/api/profile'), // Replace with your API URL
+          headers: {
+            'Authorization': 'Bearer $token', // Authorization header with the token
+            'Content-Type': 'application/json',
+          },
+        );
+
+        if (response.statusCode == 200) {
+          var data = jsonDecode(response.body);
+
+          // Assuming the API returns a JSON with 'name' and 'email' fields
+          setState(() {
+            _name = data['data']['name'];
+            _email = data['data']['email'];
+          });
+        } else {
+          // Handle error responses
+          var errorMessage = jsonDecode(response.body)['message'] ?? 'Failed to fetch profile data';
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(errorMessage)),
+          );
+        }
+      } catch (e) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(e.toString())),
+        );
+      } finally {
+        setState(() {
+          _isLoading = false; // Stop loading
+        });
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('No token found, please log in first')),
+      );
+    }
+  }
 
   // Function to log the user out
   Future<void> _logoutUser(BuildContext context) async {
@@ -94,20 +168,22 @@ class _ProfileState extends State<Profile> {
                       ],
                     ),
                     const SizedBox(height: 20),
-                    const Center(
+                    Center(
                       child: CircleAvatar(
-                        backgroundImage: AssetImage("images/profilepic.jpg"),
+                        backgroundImage: _profilePhotoFile != null
+                            ? FileImage(_profilePhotoFile!) // Load profile photo from local storage (File)
+                            : const AssetImage("images/profilepic.jpg") as ImageProvider, // Fallback image
                         radius: 50,
                       ),
                     ),
                     const SizedBox(height: 20),
                     const ProfileFont(text: "Name", size: 15),
                     const SizedBox(height: 5),
-                    const ProfileFont(text: "Amika", size: 25),
+                    ProfileFont(text: _name ?? "Loading...", size: 25), // Display the fetched name or "Loading..."
                     const SizedBox(height: 10),
-                    const ProfileFont(text: "Account Level", size: 15),
+                    const ProfileFont(text: "Email", size: 15),
                     const SizedBox(height: 5),
-                    const ProfileFont(text: "10", size: 25),
+                    ProfileFont(text: _email ?? "Loading...", size: 25), // Display the fetched email or "Loading..."
                   ],
                 ),
               ),
