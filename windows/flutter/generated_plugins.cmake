@@ -6,6 +6,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   battery_plus
   file_selector_windows
   geolocator_windows
+  rive_common
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST

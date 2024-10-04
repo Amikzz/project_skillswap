@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
@@ -226,34 +227,48 @@ class _HomeState extends State<MyHome> {
   }
 
   void _showSkillDetailsDialog(Map<String, dynamic> skill) {
-    showDialog(
+    AwesomeDialog(
       context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: Text(skill['name']),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('ID: ${skill['id']}'),
-              Text('Description: ${skill['description']}'),
-              Text('Slug: ${skill['slug']}'),
-              Text('Price per Hour: Rs.${skill['pricePerHour']}'),
-              Text('Category ID: ${skill['categoryId']}'),
-              Text('Created At: ${skill['createdAt']}'),
-              Text('Updated At: ${skill['updatedAt']}'),
-            ],
-          ),
-          actions: [
-            TextButton(
-              child: const Text('Close'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
+      dialogType: DialogType.info,
+      animType: AnimType.bottomSlide,
+      title: skill['name'],
+      desc: '', // Set the desc to empty; we will define the custom layout below
+      btnOkOnPress: () {}, // Action on OK button press
+      titleTextStyle: TextStyle(
+        fontSize: 24,
+        fontWeight: FontWeight.bold,
+        color: Theme.of(context).colorScheme.onPrimary,
+      ),
+      // Use the body property to create a custom layout
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start, // Align text to the start (left)
+          children: [
+            Text('ID: ${skill['id']}', style: _getDescTextStyle()),
+            const SizedBox(height: 5), // Add spacing between lines
+            Text('Description: ${skill['description']}', style: _getDescTextStyle()),
+            const SizedBox(height: 5),
+            Text('Slug: ${skill['slug']}', style: _getDescTextStyle()),
+            const SizedBox(height: 5),
+            Text('Price per Hour: Rs.${skill['pricePerHour']}', style: _getDescTextStyle()),
+            const SizedBox(height: 5),
+            Text('Category ID: ${skill['categoryId']}', style: _getDescTextStyle()),
+            const SizedBox(height: 5),
+            Text('Created At: ${skill['createdAt']}', style: _getDescTextStyle()),
+            const SizedBox(height: 5),
+            Text('Updated At: ${skill['updatedAt']}', style: _getDescTextStyle()),
           ],
-        );
-      },
+        ),
+      ),
+    ).show();
+  }
+
+// Helper method to get the style for description text
+  TextStyle _getDescTextStyle() {
+    return TextStyle(
+      fontSize: 16,
+      color: Theme.of(context).colorScheme.onPrimary,
     );
   }
 
@@ -305,7 +320,7 @@ class _HomeState extends State<MyHome> {
                     Container(
                       alignment: Alignment.centerLeft,
                       child: Text(
-                        "Welcome back, \n$_userName!", // Display the fetched user name
+                        "Welcome back, \n$_userName", // Display the fetched user name
                         style: const TextStyle(
                           fontSize: 35,
                           fontWeight: FontWeight.bold,
@@ -326,31 +341,24 @@ class _HomeState extends State<MyHome> {
                             fontFamily: 'Roboto',
                           ),
                         ),
-                        const SizedBox(width: 130),
+                        const Expanded(child: SizedBox(width: 130)),
                         Icon(Icons.battery_std_rounded, color: Theme.of(context).colorScheme.onPrimary),
                         const SizedBox(width: 10),
-                        Expanded(
-                          child: Text(
+                        Text(
                             '$_batteryPercentage%', // Display battery percentage
                             style: const TextStyle(
                               fontSize: 20,
                               fontFamily: 'Roboto',
                             ),
                           ),
-                        ),
                       ],
                     ),
-                    const SizedBox(height: 20),
-                    TextField(
-                      decoration: InputDecoration(
-                        hintText: 'Search for a skill',
-                        prefixIcon: const Icon(Icons.search),
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10),
-                        ),
-                      ),
+                    const SizedBox(height: 30),
+                    Container(
+                      height: 1,
+                      color: Theme.of(context).colorScheme.onPrimary,
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(height: 30),
                     Container(
                       padding: const EdgeInsets.all(20),
                       width: double.infinity,
@@ -438,7 +446,7 @@ class _HomeState extends State<MyHome> {
                           margin: const EdgeInsets.only(bottom: 15),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(20),
-                            color: Theme.of(context).colorScheme.onSecondary,
+                            color: Theme.of(context).colorScheme.primary,
                           ),
                           child: ListTile(
                             leading: const Icon(Icons.lightbulb_rounded),
