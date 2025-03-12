@@ -32,7 +32,7 @@ class _AllSkillsPageState extends State<AllSkillsPage> {
     if (token != null) {
       try {
         var response = await http.get(
-          Uri.parse('http://172.20.10.7:8000/api/skills'), // Use the API URL
+          Uri.parse('http://10.3.0.116:8000/api/skills'), // Use the API URL
           headers: {
             'Authorization': 'Bearer $token',
             'Content-Type': 'application/json',

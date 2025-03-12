@@ -220,31 +220,6 @@ class Instructions extends StatelessWidget {
                             fontSize: 16,
                           ),
                         ),
-                        const SizedBox(height: 20),
-                        const Text(
-                          'Find Us on the Map:',
-                          style: TextStyle(
-                            fontFamily: 'Roboto',
-                            fontSize: 18,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        const SizedBox(height: 10),
-                        SizedBox(
-                          height: 300,
-                          child: GoogleMap(
-                            initialCameraPosition: const CameraPosition(
-                              target: LatLng(6.92, 79.86), // Coordinates for Colombo
-                              zoom: 15,
-                            ),
-                            markers: {
-                              const Marker(
-                                markerId: MarkerId('office'),
-                                position: LatLng(6.92, 79.86), // Office location marker
-                              ),
-                            },
-                          ),
-                        ),
                       ],
                     ),
                   ),

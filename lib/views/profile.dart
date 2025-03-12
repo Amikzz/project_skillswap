@@ -53,7 +53,7 @@ class _ProfileState extends State<Profile> {
       try {
         // API request to fetch profile data
         var response = await http.get(
-          Uri.parse('http://172.20.10.7:8000/api/profile'), // Replace with your API URL
+          Uri.parse('http://10.3.0.116:8000/api/profile'), // Replace with your API URL
           headers: {
             'Authorization': 'Bearer $token', // Authorization header with the token
             'Content-Type': 'application/json',
@@ -103,7 +103,7 @@ class _ProfileState extends State<Profile> {
     if (token != null) {
       try {
         var response = await http.post(
-          Uri.parse('http://172.20.10.7:8000/api/logout'),
+          Uri.parse('http://10.3.0.116:8000/api/logout'),
           headers: {
             'Authorization': 'Bearer $token',
             'Content-Type': 'application/json',

@@ -33,7 +33,7 @@ class _AllProviderPageState extends State<AllProviderPage> {
     final token = prefs.getString('token'); // Retrieve the token from shared preferences
 
     final response = await http.get(
-      Uri.parse('http://172.20.10.7:8000/api/skillsharer'),
+      Uri.parse('http://10.3.0.116:8000/api/skillsharer'),
       headers: {
         'Authorization': 'Bearer $token',
       },

@@ -53,7 +53,7 @@ class _HomeState extends State<MyHome> {
       }
 
       final response = await http.get(
-        Uri.parse('http://172.20.10.7:8000/api/profile'), // Replace with your profile API endpoint
+        Uri.parse('http://10.3.0.116:8000/api/profile'), // Replace with your profile API endpoint
         headers: {
           'Authorization': 'Bearer $token',
         },
@@ -180,7 +180,7 @@ class _HomeState extends State<MyHome> {
       }
 
       final response = await http.get(
-        Uri.parse('http://172.20.10.7:8000/api/skills'),
+        Uri.parse('http://10.3.0.116:8000/api/skills'),
         headers: {
           'Authorization': 'Bearer $token',
         },

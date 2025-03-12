@@ -49,7 +49,7 @@ class _SignupViewState extends State<SignupView> {
 
       try {
         var response = await http.post(
-          Uri.parse('http://172.20.10.7:8000/api/register'),
+          Uri.parse('http://10.3.0.116:8000/api/register'),
           headers: {
             'Content-Type': 'application/json',
           },

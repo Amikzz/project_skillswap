@@ -33,7 +33,7 @@ class _LoginViewState extends State<LoginView> {
 
       try {
         var response = await http.post(
-          Uri.parse('http://172.20.10.7:8000/api/login'), // Change to your login URL
+          Uri.parse('http://10.3.0.116:8000/api/login'), // Change to your login URL
           headers: {
             'Content-Type': 'application/json',
           },
