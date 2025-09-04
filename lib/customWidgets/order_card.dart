@@ -1,15 +1,39 @@
 import 'package:flutter/material.dart';
 
+/// A widget that displays information about an order.
+///
+/// This widget is used to display the details of an order, including the
+/// title, image, worker, status, and price.
 class OrderCard extends StatelessWidget {
-
+  /// The title of the order.
   final String title;
+
+  /// The path to the image for the order.
   final String image;
+
+  /// The name of the worker assigned to the order.
   final String worker;
+
+  /// The status of the order, e.g., "In Progress".
   final String status;
+
+  /// The color of the status text.
   final Color statusColor;
+
+  /// The price of the order.
   final double price;
 
-  const OrderCard({super.key, required this.title, required this.image, required this.worker, required this.status, required this.statusColor, required this.price});
+  /// Creates an [OrderCard] widget.
+  ///
+  /// All parameters are required.
+  const OrderCard(
+      {super.key,
+      required this.title,
+      required this.image,
+      required this.worker,
+      required this.status,
+      required this.statusColor,
+      required this.price});
 
   @override
   Widget build(BuildContext context) {

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:project_skillswap/lists/categorieslist.dart';
 
+/// A page that displays a list of skill categories.
+///
+/// This page displays a list of skill categories, and each category can be
+/// expanded to show the skills within it.
 class SkillCategoriesPage extends StatelessWidget {
-
+  /// Creates a [SkillCategoriesPage].
   const SkillCategoriesPage({super.key});
 
   @override

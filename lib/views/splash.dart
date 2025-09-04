@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+/// The splash screen of the app.
+///
+/// This page is shown when the app is first launched. It displays a logo and
+/// then navigates to the appropriate page based on whether the user is logged
+/// in or not.
 class Splash extends StatefulWidget {
+  /// Creates a [Splash] screen.
   const Splash({super.key});
 
   @override
@@ -15,6 +21,10 @@ class _SplashState extends State<Splash> {
     _navigateToNextPage();
   }
 
+  /// Navigates to the next page after the splash screen.
+  ///
+  /// If the user is logged in, it navigates to the home page. Otherwise, it
+  /// navigates to the onboarding page.
   Future<void> _navigateToNextPage() async {
     // Simulate loading time (e.g., 3 seconds for the splash screen)
     await Future.delayed(const Duration(seconds: 3), () {});

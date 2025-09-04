@@ -1,9 +1,16 @@
 import 'package:flutter/material.dart';
 
+/// A custom bottom navigation bar widget.
+///
+/// This widget displays a row of [IconButton]s for navigation.
+/// The selected screen is highlighted with a different color.
 class MyBottomNavigationBar extends StatefulWidget {
-
+  /// The route name of the currently selected screen.
   String selectedScreen = '/home';
 
+  /// Creates a [MyBottomNavigationBar].
+  ///
+  /// The [selectedScreen] parameter must not be null.
   MyBottomNavigationBar({super.key, required this.selectedScreen});
 
   @override

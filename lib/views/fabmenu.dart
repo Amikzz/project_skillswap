@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
 
+/// A widget that displays a menu in a bottom sheet.
+///
+/// This widget displays a list of menu items, and each item can be tapped to
+/// navigate to a different page.
 class MenuBottomSheet extends StatefulWidget {
+  /// Creates a [MenuBottomSheet].
   const MenuBottomSheet({super.key});
 
   @override
@@ -10,7 +15,11 @@ class MenuBottomSheet extends StatefulWidget {
 class _MenuBottomSheetState extends State<MenuBottomSheet> {
   List<Map<String, dynamic>> menuItems = [
     {'icon': Icons.category, 'title': 'Categories', 'ontap': () {}},
-    {'icon': Icons.imagesearch_roller_sharp, 'title': 'All Skills', 'ontap': () {}},
+    {
+      'icon': Icons.imagesearch_roller_sharp,
+      'title': 'All Skills',
+      'ontap': () {}
+    },
     {'icon': Icons.person, 'title': 'All Providers', 'ontap': () {}},
   ];
 

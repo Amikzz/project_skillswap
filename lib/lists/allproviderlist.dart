@@ -1,5 +1,9 @@
 import 'package:project_skillswap/models/allprovidermodel.dart';
 
+/// A list of service providers.
+///
+/// This list contains sample data for service providers, including their
+/// profile photo, name, and skill.
 final List<Provider> providers = [
   Provider(profilePhoto: 'images/defaultprofile.jpg', name: 'Amal Perera', skill: 'Flutter Development'),
   Provider(profilePhoto: 'images/defaultprofile.jpg', name: 'Kumari Silva', skill: 'Web Design'),

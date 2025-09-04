@@ -1,15 +1,29 @@
 import 'package:flutter/material.dart';
 
+/// A widget that displays a card with a title, an icon, and a navigation arrow.
+///
+/// This widget is typically used in a user's profile screen to provide
+/// navigation to different sections of the app, such as "Settings" or "My Orders".
 class ProfileCard extends StatelessWidget {
+  /// The title of the card.
   final String title;
-  final IconData icon;
-  final VoidCallback? onTap; // Added onTap parameter
 
+  /// The icon to be displayed on the card.
+  final IconData icon;
+
+  /// The callback function that is called when the card is tapped.
+  ///
+  /// If this is null, the card will be disabled.
+  final VoidCallback? onTap;
+
+  /// Creates a [ProfileCard] widget.
+  ///
+  /// The [title] and [icon] parameters must not be null.
   const ProfileCard({
     super.key,
     required this.title,
     required this.icon,
-    this.onTap, // Optional onTap callback
+    this.onTap,
   });
 
   @override

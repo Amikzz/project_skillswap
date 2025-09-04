@@ -1,13 +1,31 @@
 import 'package:flutter/material.dart';
 
+/// A widget that displays detailed information about a skill.
+///
+/// This widget is used to display the details of a skill, including the
+/// title, subtitle, banner image, icon image, description, and top contributors.
 class SkillInfo extends StatelessWidget {
+  /// The title of the skill.
   final String title;
+
+  /// The subtitle of the skill.
   final String subtitle;
+
+  /// The path to the banner image for the skill.
   final String bannerImage;
+
+  /// The path to the icon image for the skill.
   final String iconImage;
+
+  /// The description of the skill.
   final String description;
+
+  /// A list of paths to the images of the top contributors for the skill.
   final List<String> topContributors;
 
+  /// Creates a [SkillInfo] widget.
+  ///
+  /// All parameters are required.
   const SkillInfo({
     super.key,
     required this.title,

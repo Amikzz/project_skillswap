@@ -9,7 +9,13 @@ import '../customWidgets/bottom_navigation_bar.dart';
 import '../customWidgets/profile_cards.dart';
 import '../customWidgets/profile_font.dart';
 
+/// The user's profile page.
+///
+/// This page displays the user's profile information, including their name,
+/// email, and profile photo. It also provides access to other parts of the
+/// app, such as settings and help.
 class Profile extends StatefulWidget {
+  /// Creates a [Profile] page.
   const Profile({super.key});
 
   @override
@@ -29,7 +35,7 @@ class _ProfileState extends State<Profile> {
     _fetchProfileData(); // Fetch profile data from the API
   }
 
-  // Function to load profile photo path from shared preferences and retrieve the file
+  /// Loads the user's profile photo from local storage.
   Future<void> _loadProfilePhoto() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? photoPath = prefs.getString('profile_image'); // Fetch the stored photo path
@@ -40,7 +46,7 @@ class _ProfileState extends State<Profile> {
     }
   }
 
-  // Function to fetch profile data from the API
+  /// Fetches the user's profile data from the API.
   Future<void> _fetchProfileData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token'); // Retrieve the token from shared preferences
@@ -91,7 +97,7 @@ class _ProfileState extends State<Profile> {
     }
   }
 
-  // Function to log the user out
+  /// Logs the user out.
   Future<void> _logoutUser(BuildContext context) async {
     setState(() {
       _isLoading = true; // Start loading

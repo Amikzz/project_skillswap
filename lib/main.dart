@@ -15,11 +15,14 @@ import 'package:project_skillswap/views/profile.dart';
 
 import 'views/allproviders.dart';
 
+/// The main entry point of the app.
 void main() {
   runApp(const MyApp());
 }
 
+/// The root widget of the app.
 class MyApp extends StatefulWidget {
+  /// Creates a [MyApp].
   const MyApp({super.key});
 
   @override

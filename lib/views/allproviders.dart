@@ -4,7 +4,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 import 'package:awesome_dialog/awesome_dialog.dart';
 
+/// A page that displays a list of all service providers.
+///
+/// This page fetches a list of providers from an API and displays them in a
+/// grid. Users can search for providers by name or skill.
 class AllProviderPage extends StatefulWidget {
+  /// Creates an [AllProviderPage].
   const AllProviderPage({super.key});
 
   @override
@@ -28,6 +33,7 @@ class _AllProviderPageState extends State<AllProviderPage> {
     });
   }
 
+  /// Fetches the list of providers from the API.
   Future<void> fetchProviders() async {
     final prefs = await SharedPreferences.getInstance();
     final token = prefs.getString('token'); // Retrieve the token from shared preferences
@@ -54,6 +60,7 @@ class _AllProviderPageState extends State<AllProviderPage> {
     }
   }
 
+  /// Filters the list of providers based on the search query.
   void filterProviders() {
     final query = searchController.text.toLowerCase();
     setState(() {
@@ -64,6 +71,7 @@ class _AllProviderPageState extends State<AllProviderPage> {
     });
   }
 
+  /// Shows a dialog with the details of a provider.
   void showProviderDetails(dynamic provider) {
     AwesomeDialog(
       context: context,
@@ -97,6 +105,7 @@ class _AllProviderPageState extends State<AllProviderPage> {
   }
 
 // Helper method to get the style for description text
+  /// Returns the text style for the description text in the dialog.
   TextStyle _getDescTextStyle() {
     return TextStyle(
       fontSize: 16,
