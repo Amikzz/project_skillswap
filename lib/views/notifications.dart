@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:project_skillswap/customWidgets/bottom_navigation_bar.dart';
 import 'package:project_skillswap/lists/notifications.dart';
 
+/// A page that displays a list of notifications.
 class Notifications extends StatefulWidget {
+  /// Creates a [Notifications] page.
   const Notifications({super.key});
 
   @override

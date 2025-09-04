@@ -14,7 +14,13 @@ import 'package:battery_plus/battery_plus.dart'; // Import battery_plus
 
 import 'fabmenu.dart';
 
+/// The home page of the app.
+///
+/// This page displays a welcome message, the user's location, battery percentage,
+/// and a list of trending skills. It also provides access to other parts of
+/// the app through a menu and a bottom navigation bar.
 class MyHome extends StatefulWidget {
+  /// Creates a [MyHome] page.
   const MyHome({super.key});
 
   @override
@@ -42,7 +48,7 @@ class _HomeState extends State<MyHome> {
     _fetchProfile(); // Fetch the user profile to get the user's name
   }
 
-  // Fetch the user's profile
+  /// Fetches the user's profile to get the user's name.
   Future<void> _fetchProfile() async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -79,7 +85,7 @@ class _HomeState extends State<MyHome> {
     }
   }
 
-  // Fetch battery percentage
+  /// Fetches the battery percentage.
   Future<void> _getBatteryPercentage() async {
     final int batteryLevel = await _battery.batteryLevel;
     setState(() {
@@ -87,7 +93,7 @@ class _HomeState extends State<MyHome> {
     });
   }
 
-  // Load the image from local storage
+  /// Loads the profile image from local storage.
   Future<void> _loadImage() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? imagePath = prefs.getString('profile_image');
@@ -98,7 +104,7 @@ class _HomeState extends State<MyHome> {
     }
   }
 
-  // Save the image to local storage
+  /// Saves the profile image to local storage.
   Future<void> _saveImage(File image) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     final directory = await getApplicationDocumentsDirectory();
@@ -113,7 +119,7 @@ class _HomeState extends State<MyHome> {
     });
   }
 
-  // Function to pick an image from the camera
+  /// Picks an image from the camera and saves it.
   Future<void> _pickImageFromCamera() async {
     final ImagePicker _picker = ImagePicker();
     final XFile? image = await _picker.pickImage(source: ImageSource.camera);
@@ -124,6 +130,7 @@ class _HomeState extends State<MyHome> {
     }
   }
 
+  /// Gets the current location of the user.
   Future<void> _getCurrentLocation() async {
     bool serviceEnabled;
     LocationPermission permission;
@@ -171,6 +178,7 @@ class _HomeState extends State<MyHome> {
     });
   }
 
+  /// Fetches the list of skills from the API.
   Future<void> _fetchSkills() async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -226,6 +234,7 @@ class _HomeState extends State<MyHome> {
     }
   }
 
+  /// Shows a dialog with the details of a skill.
   void _showSkillDetailsDialog(Map<String, dynamic> skill) {
     AwesomeDialog(
       context: context,
@@ -264,7 +273,7 @@ class _HomeState extends State<MyHome> {
     ).show();
   }
 
-// Helper method to get the style for description text
+  /// Returns the text style for the description text in the dialog.
   TextStyle _getDescTextStyle() {
     return TextStyle(
       fontSize: 16,
@@ -272,6 +281,7 @@ class _HomeState extends State<MyHome> {
     );
   }
 
+  /// Shows the menu bottom sheet.
   void _showMenu(BuildContext context) {
     showModalBottomSheet(
       context: context,

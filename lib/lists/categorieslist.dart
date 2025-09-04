@@ -1,5 +1,9 @@
 import 'package:project_skillswap/models/skillcategorymodel.dart';
 
+/// A list of skill categories.
+///
+/// This list contains sample data for skill categories, including their
+/// name and a list of skills within that category.
 final List<SkillCategory> categories = [
   SkillCategory(
     name: 'Plumbing',

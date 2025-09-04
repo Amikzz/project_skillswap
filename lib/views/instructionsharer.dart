@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+/// A page that provides instructions for skill sharers on how to register.
+///
+/// This page displays the registration process, office address, office hours,
+/// and a map showing the office location.
 class Instructions extends StatelessWidget {
+  /// Creates an [Instructions] page.
   const Instructions({super.key});
 
   @override
@@ -233,6 +238,7 @@ class Instructions extends StatelessWidget {
   }
 }
 
+/// The main entry point of the app.
 void main() {
   runApp(const MaterialApp(
     home: Instructions(),

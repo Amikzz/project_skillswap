@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:project_skillswap/customWidgets/bottom_navigation_bar.dart';
 import 'package:project_skillswap/customWidgets/order_card.dart';
 
+/// A page that displays a list of the user's orders.
 class Orders extends StatefulWidget {
+  /// Creates an [Orders] page.
   const Orders({super.key});
 
   @override

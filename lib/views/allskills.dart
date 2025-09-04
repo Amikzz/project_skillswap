@@ -4,7 +4,12 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+/// A page that displays a list of all available skills.
+///
+/// This page fetches a list of skills from an API and displays them in a
+/// grid. Users can search for skills by name.
 class AllSkillsPage extends StatefulWidget {
+  /// Creates an [AllSkillsPage].
   const AllSkillsPage({super.key});
 
   @override
@@ -24,7 +29,7 @@ class _AllSkillsPageState extends State<AllSkillsPage> {
     _searchController.addListener(_filterSkills); // Add listener to handle search input
   }
 
-  // Function to fetch skills from the API with the stored token
+  /// Fetches the list of skills from the API.
   Future<void> _fetchSkills() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? token = prefs.getString('token');
@@ -73,7 +78,7 @@ class _AllSkillsPageState extends State<AllSkillsPage> {
     }
   }
 
-  // Function to filter skills based on search input
+  /// Filters the list of skills based on the search query.
   void _filterSkills() {
     String query = _searchController.text.toLowerCase(); // Get the search query in lowercase
     setState(() {
@@ -83,7 +88,7 @@ class _AllSkillsPageState extends State<AllSkillsPage> {
     });
   }
 
-  // Function to show skill details in a dialog
+  /// Shows a dialog with the details of a skill.
   void _showSkillDetails(BuildContext context, dynamic skill) {
     AwesomeDialog(
       context: context,

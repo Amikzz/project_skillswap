@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:project_skillswap/views/startup.dart';
 
+/// The onboarding page of the app.
+///
+/// This page is shown to the user the first time they open the app. It displays
+/// a series of messages to introduce the user to the app.
 class OnboardView extends StatefulWidget {
+  /// Creates an [OnboardView].
   const OnboardView({super.key});
 
   @override
@@ -19,6 +24,10 @@ class _OnboardViewState extends State<OnboardView> {
     checkFirstSeen();
   }
 
+  /// Checks if the user has seen the onboarding page before.
+  ///
+  /// If the user has seen the onboarding page before, it navigates to the
+  /// startup page.
   void checkFirstSeen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool isFirstSeen = prefs.getBool('first_seen') ?? true;
@@ -28,6 +37,11 @@ class _OnboardViewState extends State<OnboardView> {
     }
   }
 
+  /// Handles the "Next" button click.
+  ///
+  /// This method updates the text and button text of the onboarding page.
+  /// If the user has seen all the onboarding messages, it navigates to the
+  /// startup page.
   void clickNext() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
@@ -42,6 +56,7 @@ class _OnboardViewState extends State<OnboardView> {
     });
   }
 
+  /// Navigates to the startup page.
   void navigateToStartup() {
     Navigator.of(context).pushReplacement(createRoute());
   }
@@ -134,6 +149,7 @@ class _OnboardViewState extends State<OnboardView> {
   }
 }
 
+/// Creates a page route for the startup page.
 Route createRoute() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => const StartupView(),

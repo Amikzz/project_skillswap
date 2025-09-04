@@ -8,7 +8,12 @@ import 'package:project_skillswap/customWidgets/startup_elevated_button.dart';
 import 'package:project_skillswap/views/home.dart';
 import 'package:project_skillswap/views/signup.dart';
 
+/// The login page of the app.
+///
+/// This page allows users to log in to their account using their email and
+/// password.
 class LoginView extends StatefulWidget {
+  /// Creates a [LoginView].
   const LoginView({super.key});
 
   @override
@@ -21,6 +26,7 @@ class _LoginViewState extends State<LoginView> {
   bool _isLoading = false; // Loading state variable
   final _formKey = GlobalKey<FormState>(); // Form key for validation
 
+  /// Logs the user in with the provided email and password.
   Future<void> _loginUser() async {
     if (_formKey.currentState!.validate()) {
       setState(() {
@@ -102,6 +108,7 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
+  /// Builds the content of the login page.
   List<Widget> _buildContent(BuildContext context, bool isPortrait) {
     return [
       Expanded(
@@ -188,6 +195,7 @@ class _LoginViewState extends State<LoginView> {
   }
 }
 
+/// Creates a page route for the home page.
 Route createRoute() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => const MyHome(),
@@ -200,6 +208,7 @@ Route createRoute() {
   );
 }
 
+/// Creates a page route for the signup page.
 Route createRoute2() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => const SignupView(),

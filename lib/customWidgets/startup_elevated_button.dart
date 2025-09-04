@@ -1,19 +1,40 @@
 import 'package:flutter/material.dart';
 
+/// A custom elevated button widget for startup screens.
+///
+/// This widget displays an elevated button with a specific style, and it can
+/// show a loading indicator.
 class StartupElevatedButton extends StatelessWidget {
+  /// The callback function that is called when the button is pressed.
+  ///
+  /// If this is null, the button will be disabled.
   final void Function()? onPressed;
-  final String text;
-  final Color? backgroundColor;
-  final Color? foregroundColor;
-  final bool isLoading; // New property to check if loading
 
+  /// The text to be displayed on the button.
+  final String text;
+
+  /// The background color of the button.
+  final Color? backgroundColor;
+
+  /// The foreground color of the button (text and icon).
+  final Color? foregroundColor;
+
+  /// Whether the button is in a loading state.
+  ///
+  /// If this is true, a [CircularProgressIndicator] will be displayed instead
+  /// of the text, and the button will be disabled.
+  final bool isLoading;
+
+  /// Creates a [StartupElevatedButton] widget.
+  ///
+  /// The [onPressed] and [text] parameters must not be null.
   const StartupElevatedButton({
     super.key,
     required this.onPressed,
     required this.text,
     this.backgroundColor,
     this.foregroundColor,
-    this.isLoading = false, // Default value to false
+    this.isLoading = false,
   });
 
   @override

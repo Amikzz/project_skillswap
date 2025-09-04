@@ -1,3 +1,7 @@
+/// A list of notifications.
+///
+/// This list contains sample data for notifications, including their
+/// title, subtitle, and image.
 List<Map<String, dynamic>> notifications = [
   {'title': 'Skill Request', 'subtitle': 'Sujith Gunasinghe has requested a session for Painting.', 'image': 'images/painting.png'},
   {'title': 'Skill Offer', 'subtitle': 'Tharindu Liyanage has offered a session for Web Development.', 'image': 'images/webdevlop.png'},

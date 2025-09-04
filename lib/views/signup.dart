@@ -5,7 +5,11 @@ import 'package:project_skillswap/customWidgets/haveanaccount_login_signup.dart'
 import 'package:project_skillswap/customWidgets/startup_elevated_button.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+/// The signup page of the app.
+///
+/// This page allows users to create a new account.
 class SignupView extends StatefulWidget {
+  /// Creates a [SignupView].
   const SignupView({super.key});
 
   @override
@@ -24,13 +28,13 @@ class _SignupViewState extends State<SignupView> {
   TextEditingController phoneController = TextEditingController();
   TextEditingController addressController = TextEditingController();
 
-  // Function to save token to local storage
+  /// Saves the authentication token to local storage.
   Future<void> _saveToken(String token) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString('token', token);
   }
 
-  // This function handles registration and auto-login
+  /// Registers a new user.
   Future<void> _registerUser() async {
     if (_formKey.currentState!.validate()) {
       setState(() {

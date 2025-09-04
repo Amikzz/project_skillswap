@@ -2,7 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:project_skillswap/customWidgets/startup_elevated_button.dart';
 import 'package:project_skillswap/views/login.dart';
 
+/// The startup page of the app.
+///
+/// This page is shown after the onboarding page. It allows the user to select
+/// whether they want to register as a "Skill Seeker" or a "Skill Sharer".
 class StartupView extends StatelessWidget {
+  /// Creates a [StartupView].
   const StartupView({super.key});
 
   @override
@@ -28,6 +33,7 @@ class StartupView extends StatelessWidget {
     );
   }
 
+  /// Builds the content of the startup page.
   List<Widget> _buildContent(BuildContext context, bool isPortrait) {
     return [
       SizedBox(height: isPortrait ? 50 : 0),
@@ -93,6 +99,7 @@ class StartupView extends StatelessWidget {
   }
 }
 
+/// Creates a page route for the login page.
 Route createRoute() {
   return PageRouteBuilder(
     pageBuilder: (context, animation, secondaryAnimation) => const LoginView(),
